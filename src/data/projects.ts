@@ -39,6 +39,7 @@ export const projects: Project[] = [
     stack: ['React', 'TypeScript', 'Vite', 'Backend API'],
     liveUrl: 'https://shaagird.org',
     gallery: [
+      { src: '/projects/shaagird/fundraising.jpg', alt: 'Shaagird Foundation: Every Unit Builds A Child’s Future fundraising and unit sponsorship page', width: 1024, height: 505 },
       { src: '/projects/shaagird/stories.webp', alt: 'Shaagird Foundation stories site: “Stories of Struggles & Hope” with a photo of children', width: 1416, height: 680 },
       { src: '/projects/shaagird/home.webp', alt: 'Shaagird Foundation home page: “Empower a Child’s Future Through Education” with impact stats', width: 1416, height: 808 },
       { src: '/projects/shaagird/donate.webp', alt: 'Shaagird Foundation donate page: “Enrich the Dreams of Those Who Lost Hope” with a quick donate bar', width: 1416, height: 702 },
@@ -119,6 +120,55 @@ export const projects: Project[] = [
     coverZoom: { x: 0.3, y: 0.96 }, // the hero is empty; look at the brand row
     summary: 'An e-commerce store for refurbished laptops, with product search, brand filters, a cart and customer accounts.',
   },
+  {
+    slug: 'm2s-field-survey',
+    title: 'M2S Field Survey',
+    focus: 'Assam-wide socio-economic baseline survey & supervisor console',
+    categories: ['Nonprofit', 'Web Application'],
+    group: 'Nonprofit',
+    featured: true,
+    coverVariant: 1,
+    cover: {
+      src: '/projects/m2s-field-survey/cover.png',
+      alt: 'M2S Field Survey Admin & Supervisor Console for Assam-Wide Socio-Economic Baseline Survey of Evicted Households',
+      width: 1024,
+      height: 506,
+    },
+    stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/zainn-dev/m2s-field-survey',
+    summary:
+      'A digital household survey and administrative console for families evicted from the Lutumari Reserve Forest, allowing volunteers to gather consented field data and supervisors to audit, verify, and analyse baseline indicators.',
+    features: [
+      'Field survey collection workflow with consent, interview data and document capture',
+      'Supervisor & admin portal for verification, approval, and audit trails',
+      'Live socio-economic indicators, cluster breakdown, and data export tools',
+    ],
+  },
+  {
+    slug: 'nostalgic-musics',
+    title: 'Papa Ke Zamane Ke Gane',
+    focus: 'Immersive retro music player with ambient soundscapes',
+    categories: ['Digital Experience', 'Web Application'],
+    group: 'Web Apps',
+    featured: true,
+    coverVariant: 4,
+    cover: {
+      src: '/projects/nostalgic-musics/cover.jpg',
+      alt: 'Papa Ke Zamane Ke Gane: Vintage aesthetic web player with nostalgic radio, ambient rain mode, and synchronized playlists',
+      width: 1024,
+      height: 502,
+    },
+    stack: ['React', 'Next.js', 'Tailwind CSS', 'Web Audio API'],
+    githubUrl: 'https://github.com/zainn-dev/nostalgic-musics',
+    summary:
+      'An aesthetic retro web application designed for listening to timeless songs with vintage radio visuals, ambient background sounds like Rain Mode, and curated classic playlists.',
+    features: [
+      'Retro radio tuner aesthetic with custom audio playback controls and cassette animations',
+      'Ambient Rain Mode and soothing background atmospheric audio layers',
+      'Curated playlists spanning 90s Bollywood, NFAK, Purani Yaadein, and Pakistani classics',
+      'Live synchronized listener counter and interactive retro sound effects',
+    ],
+  },
 ];
 
 export const secondaryProjects = () => projects.filter((p) => !p.featured);
@@ -142,6 +192,8 @@ export const legacySlugs: Record<string, string> = {
   smartdraftsman: 'smartdraftsman',
   clipfetch: 'clipfetch',
   refurbmart: 'refurbmart',
+  'm2s-field-survey': 'm2s-field-survey',
+  'nostalgic-musics': 'nostalgic-musics',
 };
 
 export const nextProject = (slug: string) => {
