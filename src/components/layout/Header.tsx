@@ -191,10 +191,7 @@ export function Header() {
             </div>
             {/* col 5: socials · CTA (inset, rounded) */}
             <div className="grid min-h-0 grid-rows-[minmax(0,1fr)_minmax(0,2fr)] gap-px">
-              <div className="grid grid-cols-2 gap-px">
-                <SocialCell label="Insta" platform="instagram" title="Instagram" />
-                <SocialCell label="Link" platform="linkedin" title="LinkedIn" />
-              </div>
+              <NavCell to="/social" label="Social Media" />
               <div className={cn(cell, 'min-h-0 p-2.5')}>
                 <div data-hm="cta" className="h-full w-full">
                   <Cta className="rounded-[6px]" />
@@ -204,11 +201,10 @@ export function Header() {
           </div>
         ) : (
           <div className="grid gap-px bg-[var(--grid)]">
-            <div className="grid h-11 grid-cols-4 gap-px">
+            <div className="grid h-11 grid-cols-3 gap-px">
               <NavCell to="/" label="Home" end />
               <NavCell to="/about" label="About" />
-              <SocialCell label="Insta" platform="instagram" title="Instagram" />
-              <SocialCell label="Link" platform="linkedin" title="LinkedIn" />
+              <NavCell to="/social" label="Social Media" />
             </div>
             <div className="grid h-[4.5rem] grid-cols-[4.5rem_1fr_4.5rem] gap-px">
               <Mascot />

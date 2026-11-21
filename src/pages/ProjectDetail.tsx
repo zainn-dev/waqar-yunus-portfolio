@@ -289,8 +289,7 @@ export default function ProjectDetail() {
             ))}
           </div>
           <div className="flex gap-6">
-            <SocialCell label="Insta" platform="instagram" title="Instagram" className={cornerLink} tabIndex={cornersOn ? 0 : -1} />
-            <SocialCell label="Link" platform="linkedin" title="LinkedIn" className={cornerLink} tabIndex={cornersOn ? 0 : -1} />
+            <NavLink to="/social" tabIndex={cornersOn ? 0 : -1} className={({ isActive }) => cn(cornerLink, isActive && 'text-accent')}>Social Media</NavLink>
           </div>
         </nav>
       </div>
