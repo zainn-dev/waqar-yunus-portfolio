@@ -1,0 +1,489 @@
+@import '@fontsource-variable/space-grotesk/wght.css';
+@import '@fontsource-variable/antonio/wght.css';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/jetbrains-mono/wght.css';
+@import 'lenis/dist/lenis.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Palette (griflan-style dark luxe): near-black, warm cream, taupe, one red accent #FF3831.
+     Values are space-separated RGB for Tailwind alpha support. The whole site is dark;
+     `.theme-dark` is kept as an alias so older sections keep working. */
+  :root, .theme-dark {
+    --c-bg: 24 22 22;         /* near-black #181616 */
+    --c-bg2: 32 30 30;        /* #201E1E */
+    --c-bg3: 42 39 39;        /* #2A2727 */
+    --c-fg: 255 253 219;      /* warm cream #FFFDDB */
+    --c-mute: 156 150 133;    /* taupe #9C9685 */
+    --c-line: 255 253 219;    /* used with opacity for hairlines / grid */
+    --c-fill: 255 56 49;      /* red #FF3831 — solid CTA fill (cream text, large type) */
+    --c-onfill: 255 253 219;  /* cream on red */
+    --c-edge: 255 56 49;
+    --c-accent: 255 56 49;    /* red text on near-black ≈ 5:1 */
+    --dot: #FF3831;           /* brand full stop */
+    --syn-blue: #79c0ff;
+    --syn-purple: #d2a8ff;
+    --syn-orange: #ffa657;
+    --syn-green: #7ee787;
+    --bg: rgb(var(--c-bg));
+    --lime: rgb(var(--c-fill));
+    --text: rgb(var(--c-fg));
+    --mute: rgb(var(--c-mute));
+    --line: rgb(var(--c-line) / 0.14);
+    --grid: rgb(var(--c-line) / 0.13);
+    color-scheme: dark;
+  }
+  :root {
+    --gutter: clamp(1.25rem, 4vw, 3.5rem);
+    /* The grid header sits in the page flow, so content needs no offset for it (0).
+       --bar-h is its real height; --mini-h the compact bar that slides in on scroll. */
+    --header-h: 0px;
+    /* below lg: the 2.75rem nav row + the 4.5rem logo row and their 1px seam (the header adds a 1px rule under it) */
+    --bar-h: calc(7.25rem + 1px);
+    --mini-h: 3.5rem;
+    --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (min-width: 1024px) {
+    :root { --bar-h: clamp(8.5rem, 10vw, 12rem); }
+  }
+  .theme-dark { color: rgb(var(--c-fg)); }
+
+  html {
+    background: var(--bg);
+    color: var(--text);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    scroll-padding-top: calc(var(--mini-h) + 1rem + env(safe-area-inset-top, 0px));
+  }
+
+  body {
+    @apply font-sans bg-ink text-bone;
+    min-height: 100dvh;
+    overflow-x: clip;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: #FF3831;
+    color: #FFFDDB;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  img, video, svg, canvas { max-width: 100%; }
+
+  :focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+}
+
+@layer components {
+  .page-x {
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+  }
+  .page-wrap {
+    @apply mx-auto w-full max-w-page page-x;
+  }
+
+  /* Fluid type scale (1440 reference) */
+  .t-mega {
+    font-size: clamp(3rem, 11.2vw, 13.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.015em;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .t-display {
+    font-size: clamp(2.8rem, 8.6vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+  .t-h2 {
+    font-size: clamp(2.5rem, 6vw, 6.75rem);
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .t-h3 {
+    font-size: clamp(1.6rem, 2.8vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  .t-lead {
+    font-size: clamp(1.125rem, 1.55vw, 1.5rem);
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+  }
+  .t-hero {
+    font-size: clamp(3.2rem, 10vw, 12rem);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .t-section {
+    font-size: clamp(2.8rem, 7vw, 7.75rem);
+    line-height: 0.9;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .t-label {
+    @apply font-mono text-[0.75rem] font-semibold uppercase leading-none text-mute;
+    letter-spacing: 0.06em;
+  }
+  /* Grid-cell chrome shared by the header, contact panel and project gallery */
+  .cell-b { border-color: var(--grid); }
+  .grid-bg {
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%;
+  }
+
+  .hairline { border-color: var(--line); }
+
+  /* Masked line used by split-text reveals */
+  .line-mask {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.08em;
+    margin-bottom: -0.08em;
+  }
+  .line-mask > span { display: block; will-change: transform; }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    transition: background-size 0.5s var(--ease-expo);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+    background-position: 0% 100%;
+  }
+
+  .stroke-text {
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text);
+  }
+  /* Mockup elevation — reserved for product/demo panels only. */
+  .shadow-mockup { box-shadow: 0 20px 40px #00000080; }
+
+  .tap { min-height: 44px; min-width: 44px; }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+}
+
+/* Custom cursor: only applies when JS adds .has-cursor (fine pointer, motion OK) */
+.has-cursor, .has-cursor a, .has-cursor button, .has-cursor [role='button'] { cursor: none; }
+.has-cursor input, .has-cursor textarea, .has-cursor select { cursor: text; }
+/* where the custom blob is hidden (data-cursor-hide: the header, the W globe, the CTA...) the plain
+   system cursor shows instead: the hand on anything clickable, the arrow elsewhere */
+.has-cursor [data-cursor-hide] { cursor: default; }
+.has-cursor a[data-cursor-hide], .has-cursor button[data-cursor-hide], .has-cursor [data-cursor-hide] a,
+.has-cursor [data-cursor-hide] button, .has-cursor [data-cursor-hide] [role='button'], .has-cursor .globe-btn { cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Marquee: pure CSS so it never blocks the main thread */
+@keyframes marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track { animation: marquee var(--marquee-duration, 38s) linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 59, 47, 0.55); }
+  60% { box-shadow: 0 0 0 7px rgba(255, 59, 47, 0); }
+}
+@keyframes scroll-cue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+@keyframes progress { from { width: 0%; } to { width: 100%; } }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes fadein { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes eq { from { transform: scaleY(0.25); } to { transform: scaleY(1); } }
+
+/* Wireframe globe meridians: scaleX swings 1 → -1 → 1 (≈ cos), offset per meridian */
+@keyframes wire-turn {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(-1); }
+}
+.wire-meridian { transform-box: fill-box; transform-origin: center; animation: wire-turn 14s ease-in-out infinite; }
+
+/* Logo colour flow: the wordmark is always tinted and keeps drifting through
+   red -> orange -> green -> purple -> cream. Hover runs a quick bright sweep. */
+.logo-sweep {
+  background-image: linear-gradient(100deg, #ff3831 0%, #ff8a1f 18%, #39d98a 36%, #8b7bff 54%, rgb(var(--c-fg)) 72%, #ff3831 90%, #ff8a1f 100%);
+  background-size: 300% 100%;
+  background-position: 0% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: logo-hue-flow 14s ease-in-out infinite alternate;
+}
+.group:hover .logo-sweep { animation: logo-sweep-once 1.4s cubic-bezier(0.45, 0, 0.2, 1) both; }
+@keyframes logo-hue-flow {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
+@keyframes logo-sweep-once {
+  from { background-position: 100% 0; }
+  to { background-position: 0% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-sweep, .group:hover .logo-sweep { animation: none; background-position: 0% 0; }
+}
+
+/* Project sheet: as it scrolls, the header folds into the sheet's pill. --sheet-t runs 0 → 1 with
+   the scroll (ProjectSheet), the --hm-* targets are measured from the pill. The box closes in on
+   the pill and rises to it, the name and the CTA slide and shrink onto the pill's, the taglines go. */
+html.sheet-morph header[data-morph] {
+  /* --fold-y keeps the in-flow header pinned to the window while the project page scrolls */
+  transform: translate3d(0, calc(var(--fold-y, 0px) - var(--sheet-t, 0) * var(--hm-dy, 0px)), 0);
+  clip-path: inset(
+    calc(var(--sheet-t, 0) * var(--hm-top, 0px)) calc(var(--sheet-t, 0) * var(--hm-right, 0px))
+    calc(var(--sheet-t, 0) * var(--hm-bottom, 0px)) calc(var(--sheet-t, 0) * var(--hm-left, 0px))
+    round calc(var(--sheet-t, 0) * 14px)
+  );
+  opacity: calc((1 - var(--sheet-t, 0)) * 8);
+}
+html.sheet-morph header [data-hm='logo'] {
+  transform: translate3d(calc(var(--sheet-t, 0) * var(--hm-lx, 0px)), 0, 0) scale(calc(1 - var(--sheet-t, 0) * (1 - var(--hm-ls, 1))));
+}
+html.sheet-morph header [data-hm='cta'] {
+  position: relative;
+  z-index: 1;
+  transform-origin: 100% 50%;
+  transform: translate3d(calc(var(--sheet-t, 0) * var(--hm-cx, 0px)), calc(var(--sheet-t, 0) * var(--hm-cy, 0px)), 0) scale(calc(1 - var(--sheet-t, 0) * (1 - var(--hm-cs, 1))));
+}
+html.sheet-morph header [data-hm='fade'] { opacity: calc(1 - var(--sheet-t, 0) * 1.8); }
+
+/* Ink follow (header name + taglines): plain cream text until the pointer is over it, then a spot
+   of colour (red, orange, green, purple) sits under the pointer and moves with it. --mx/--my are set
+   from JS (Header), --ink-r grows on hover and shrinks away when the pointer leaves. */
+@property --ink-r { syntax: '<length>'; inherits: true; initial-value: 0px; }
+.ink-follow {
+  background-image: radial-gradient(circle var(--ink-r) at var(--mx, 50%) var(--my, 50%), #ff3831 0%, #ff8a1f 28%, #39d98a 52%, #8b7bff 76%, rgb(var(--c-fg)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transition: --ink-r 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ink-host:hover .ink-follow { --ink-r: var(--ink-size, 9rem); }
+@media (prefers-reduced-motion: reduce) {
+  .ink-follow { transition: none; }
+}
+
+/* Text wave: cream text with a colour band (red/orange/green/purple) sweeping across
+   every few seconds. Offset with --wave-delay. */
+.text-wave {
+  background-image: linear-gradient(100deg, rgb(var(--c-fg)) 0 34%, #ff3831 40%, #ff8a1f 45%, #39d98a 51%, #8b7bff 57%, rgb(var(--c-fg)) 64% 100%);
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-decoration-color: rgb(var(--c-fg));
+  animation: text-wave 8s cubic-bezier(0.45, 0, 0.25, 1) var(--wave-delay, 0s) infinite;
+}
+.text-wave a, .text-wave span { color: inherit; text-decoration-color: rgb(var(--c-fg)); }
+@keyframes text-wave {
+  0% { background-position: 100% 0; }
+  45%, 100% { background-position: 0% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-wave { animation: none; background-position: 100% 0; }
+}
+
+/* Header tagline cells: a short coloured line slides along the bottom border */
+.cell-accent::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 22%;
+  background: linear-gradient(90deg, transparent, #ff3831, #ff8a1f, #39d98a, #8b7bff, transparent);
+  opacity: 0.8;
+  animation: cell-accent 9s ease-in-out var(--wave-delay, 0s) infinite alternate;
+  pointer-events: none;
+}
+@keyframes cell-accent {
+  from { transform: translateX(0); }
+  to { transform: translateX(355%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cell-accent::after { animation: none; }
+}
+
+/* Intro logo: colours keep flowing while the site loads */
+.logo-flow {
+  background-image: linear-gradient(100deg, #ff3831, #ff8a1f, #39d98a, #8b7bff, rgb(var(--c-fg)), #ff3831);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: logo-flow 3.2s linear infinite;
+}
+@keyframes logo-flow {
+  from { background-position: 0% 0; }
+  to { background-position: 150% 0; }
+}
+
+/* Header mascot (FlameMascot) */
+.flame-body { transform-box: view-box; transform-origin: 50% 96%; animation: flame-sway 2.6s ease-in-out infinite; }
+.flame-outer { transform-box: fill-box; transform-origin: 50% 100%; animation: flame-flicker 0.9s ease-in-out infinite alternate; }
+.flame-inner { transform-box: fill-box; transform-origin: 50% 100%; animation: flame-flicker 0.65s ease-in-out -0.3s infinite alternate-reverse; }
+.flame-eyes { transform-box: fill-box; transform-origin: 50% 50%; animation: flame-blink 4.2s infinite; }
+.flame-embers circle { transform-box: fill-box; animation: flame-ember 2.4s ease-out infinite; opacity: 0; }
+.flame-embers circle:nth-child(2) { animation-delay: 0.8s; }
+.flame-embers circle:nth-child(3) { animation-delay: 1.6s; }
+.group:hover .flame-body { animation: flame-hop 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both; }
+@keyframes flame-sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes flame-flicker {
+  from { transform: scale(1, 1) skewX(0deg); }
+  to { transform: scale(0.96, 1.06) skewX(-3deg); }
+}
+@keyframes flame-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+@keyframes flame-ember {
+  0% { opacity: 0; transform: translateY(6px); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-26px); }
+}
+@keyframes flame-hop {
+  0% { transform: translateY(0) scale(1); }
+  40% { transform: translateY(-10%) scale(1.06, 0.96); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes gc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Floating globe button: meridians sweep around a fixed rim to fake a spinning sphere. */
+.globe-meridian {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: globe-spin 6s linear infinite;
+}
+.globe-btn:hover .globe-meridian { animation-duration: 2.4s; }
+.globe-btn--go .globe-meridian { animation-duration: 0.7s; }
+/* the glass body: frosted, lit from the pointer (or the top left), dark at the rim, with a soft
+   bounce of light at the bottom edge like a real glass ball */
+.globe-glass {
+  background:
+    radial-gradient(circle at 68% 86%, rgba(255, 253, 219, 0.2), transparent 32%),
+    radial-gradient(circle at 50% 46%, rgba(178, 173, 165, 0.34) 0%, rgba(98, 94, 90, 0.5) 58%, rgba(24, 22, 22, 0.86) 100%);
+  -webkit-backdrop-filter: blur(6px) saturate(1.25);
+  backdrop-filter: blur(6px) saturate(1.25);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 253, 219, 0.22),
+    inset -7px -9px 20px rgba(0, 0, 0, 0.5),
+    inset 5px 7px 14px rgba(255, 255, 255, 0.1),
+    0 14px 40px rgba(0, 0, 0, 0.45);
+}
+.globe-spec {
+  background: radial-gradient(circle at var(--gx, 33%) var(--gy, 26%), rgba(255, 255, 250, 0.5) 0%, rgba(255, 253, 235, 0.14) 16%, transparent 38%);
+  mix-blend-mode: screen;
+  transition: opacity 0.4s ease;
+  opacity: 0.85;
+}
+.globe-btn:hover .globe-spec { opacity: 1; }
+@keyframes globe-spin {
+  0% { transform: scaleX(1); }
+  25% { transform: scaleX(0); }
+  50% { transform: scaleX(-1); }
+  75% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .globe-meridian { animation: none; }
+}
+
+/* ---- About: tools & languages icon grid ---- */
+.tech-svg { fill: rgb(var(--c-fg) / 0.78); transition: fill 0.35s ease, filter 0.35s ease; }
+.tech-bob { animation: tech-bob 4.2s ease-in-out calc(var(--i, 0) * -0.37s) infinite; }
+.tech-svg { animation: tech-shimmer 7s ease-in-out calc(var(--i, 0) * 0.55s) infinite; }
+.tech-cell { overflow: visible; transition: background-color 0.35s ease; }
+.tech-cell::before {
+  content: ''; position: absolute; inset: 0; background: var(--brand); opacity: 0;
+  clip-path: inset(100% 0 0 0); transition: clip-path 0.45s cubic-bezier(.2,.8,.2,1), opacity 0.45s ease;
+}
+.tech-cell > .tech-bob { position: relative; transition: transform 0.4s cubic-bezier(.2,.8,.2,1); }
+.tech-cell:hover::before, .tech-cell:focus-visible::before { clip-path: inset(0 0 0 0); opacity: 0.1; }
+.tech-cell:hover .tech-svg, .tech-cell:focus-visible .tech-svg { fill: var(--brand); animation: none; filter: drop-shadow(0 0 8px var(--brand)); }
+.tech-cell:hover > .tech-bob, .tech-cell:focus-visible > .tech-bob { animation-play-state: paused; transform: scale(1.15) rotate(-8deg); }
+.tech-tip { opacity: 0; transform: translate(-50%, -80%); transition: opacity 0.25s ease, transform 0.25s ease; }
+.tech-cell:hover .tech-tip, .tech-cell:focus-visible .tech-tip { opacity: 1; transform: translate(-50%, -100%); }
+@keyframes tech-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+@keyframes tech-shimmer { 0%, 88%, 100% { filter: none; } 94% { filter: brightness(1.6) drop-shadow(0 0 4px rgb(var(--c-fg) / 0.5)); } }
+.tech-glyph { color: rgb(var(--c-fg) / 0.6); transition: color 0.3s ease, transform 0.3s ease; }
+.tech-row:hover .tech-glyph { color: var(--brand); transform: scale(1.15) rotate(-6deg); }
+@media (prefers-reduced-motion: reduce) {
+  .tech-bob, .tech-svg { animation: none !important; }
+  .tech-cell:hover > .tech-bob, .tech-cell:focus-visible > .tech-bob, .tech-row:hover .tech-glyph { transform: none; }
+  .tech-cell::before, .tech-tip { transition: none; }
+}
+
+/* one diagonal streak of light across the CTA when it switches between "Start a project" and close */
+.cta-sheen {
+  position: absolute; inset: -20% -60%; pointer-events: none; z-index: 5;
+  background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,0.85) 47%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.6) 53%, transparent 62%);
+  transform: translateX(-70%); opacity: 0;
+  animation: cta-sheen 0.85s cubic-bezier(0.65, 0, 0.35, 1) 1;
+}
+@keyframes cta-sheen {
+  0% { transform: translateX(-70%); opacity: 1; }
+  100% { transform: translateX(70%); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .cta-sheen { display: none; } }
+/* sheet pill: the project name rolls up when it changes */
+@keyframes pill-roll {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [class*="pill-roll"] { animation: none !important; }
+}

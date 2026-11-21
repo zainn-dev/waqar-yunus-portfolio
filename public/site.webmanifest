@@ -1,0 +1,11 @@
+{
+  "name": "Waqar Yunus — Creative Developer",
+  "short_name": "WAQAR.",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#101014",
+  "background_color": "#101014",
+  "display": "standalone"
+}

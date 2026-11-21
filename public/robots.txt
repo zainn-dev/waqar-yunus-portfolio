@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace with your real domain (also updated automatically on build from VITE_SITE_URL)
+Sitemap: https://your-domain.com/sitemap.xml

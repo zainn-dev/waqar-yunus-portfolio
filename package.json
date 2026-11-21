@@ -1,0 +1,53 @@
+{
+  "name": "waqar-yunus-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build && node scripts/postbuild.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --noEmit",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@fontsource-variable/antonio": "^5.3.0",
+    "@fontsource-variable/inter": "^5.1.0",
+    "@fontsource-variable/jetbrains-mono": "^5.1.0",
+    "@fontsource-variable/space-grotesk": "^5.1.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "@gsap/react": "^2.1.1",
+    "@hookform/resolvers": "^3.9.0",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.3.0",
+    "framer-motion": "^12.23.0",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.14",
+    "lucide-react": "^0.453.0",
+    "react": "~19.2.0",
+    "react-dom": "~19.2.0",
+    "react-hook-form": "^7.53.0",
+    "react-router-dom": "^7.9.0",
+    "simple-icons": "^13.21.0",
+    "three": "^0.169.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/node": "^22.7.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.169.0",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.13.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.13",
+    "globals": "^15.11.0",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "typescript": "~5.6.3",
+    "typescript-eslint": "^8.11.0",
+    "vite": "^5.4.10"
+  }
+}
