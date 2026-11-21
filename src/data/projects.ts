@@ -169,6 +169,29 @@ export const projects: Project[] = [
       'Live synchronized listener counter and interactive retro sound effects',
     ],
   },
+  {
+    slug: 'campus-mania',
+    title: 'Campus Mania',
+    focus: 'Streetwear & apparel e-commerce store with modern catalogue',
+    categories: ['E-commerce', 'Web Application'],
+    group: 'Web Apps',
+    featured: true,
+    coverVariant: 3,
+    cover: {
+      src: '/projects/campus-mania/cover.jpg',
+      alt: 'Campus Mania: Streetwear and quality apparel online store featuring new arrivals, skateboarding collections, and fast checkout',
+      width: 1024,
+      height: 454,
+    },
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Payment Integration'],
+    summary:
+      'A modern streetwear and youth apparel e-commerce platform offering responsive product search, category browsing (Men, Women, Accessories), dynamic cart system, and streamlined checkout.',
+    features: [
+      'Responsive storefront with curated streetwear drops and seasonal collections',
+      'Interactive product filtering, dynamic search, and cart management',
+      'Integrated checkout, discount/cashback logic, and order fulfillment tracking',
+    ],
+  },
 ];
 
 export const secondaryProjects = () => projects.filter((p) => !p.featured);
@@ -194,6 +217,7 @@ export const legacySlugs: Record<string, string> = {
   refurbmart: 'refurbmart',
   'm2s-field-survey': 'm2s-field-survey',
   'nostalgic-musics': 'nostalgic-musics',
+  'campus-mania': 'campus-mania',
 };
 
 export const nextProject = (slug: string) => {
