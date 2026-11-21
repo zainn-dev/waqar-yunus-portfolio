@@ -10,7 +10,6 @@ import { prefersReducedMotion } from '@/utils/motion';
 import { cn } from '@/utils/cn';
 import { Seo } from '@/components/ui/Seo';
 import { absoluteUrl } from '@/lib/site';
-import { SocialCell } from '@/components/layout/Header';
 import { useLenis } from '@/hooks/useLenis';
 import { usePaper } from '@/lib/paper';
 import { clearHandoff, handOff, peekHandoff, tileRects, tumble } from '@/lib/morph';
