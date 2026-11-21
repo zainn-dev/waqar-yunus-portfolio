@@ -6,8 +6,7 @@
   <circle cx="930" cy="300" r="120" fill="none" stroke="#C7FF3D" stroke-width="1.5" opacity=".3"/>
   <ellipse cx="930" cy="300" rx="190" ry="60" fill="none" stroke="#F5F5F0" stroke-width="1" opacity=".25" transform="rotate(-24 930 300)"/>
   <text x="80" y="88" font-family="JetBrains Mono, monospace" font-size="22" fill="#92929B">Delhi, India / Full-stack developer</text>
-  <text x="76" y="300" font-family="Space Grotesk, Arial, sans-serif" font-weight="700" font-size="128" letter-spacing="-6" fill="#F5F5F0">WAQAR</text>
-  <text x="76" y="420" font-family="Space Grotesk, Arial, sans-serif" font-weight="700" font-size="128" letter-spacing="-6" fill="#F5F5F0">YUNUS</text>
-  <rect x="520" y="384" width="34" height="34" fill="#C7FF3D"/>
+  <text x="76" y="360" font-family="Space Grotesk, Arial, sans-serif" font-weight="700" font-size="140" letter-spacing="-6" fill="#F5F5F0">ZAIN</text>
+  <rect x="420" y="324" width="34" height="34" fill="#C7FF3D"/>
   <text x="80" y="570" font-family="Inter, Arial, sans-serif" font-size="28" fill="#92929B">Crafting digital experiences that feel alive.</text>
 </svg>
