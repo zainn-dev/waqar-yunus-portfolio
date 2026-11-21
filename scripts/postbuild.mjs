@@ -71,14 +71,14 @@ const routes = [
 ];
 
 for (const r of routes) {
-  const fullTitle = r.title ? `${r.title} — Waqar Yunus` : 'Waqar Yunus — Creative Developer';
+  const fullTitle = r.title ? `${r.title} — Zain` : 'Zain — Creative Developer';
   const url = `${site}${r.path === '/' ? '/' : r.path}`;
   const img = r.image.startsWith('http') ? r.image : `${site}${r.image}`;
   const head = [
     `<title data-seo="static">${esc(fullTitle)}</title>`,
     `<meta data-seo=\"static\" name="description" content="${esc(r.description)}" />`,
     `<link data-seo=\"static\" rel="canonical" href="${esc(url)}" />`,
-    `<meta data-seo=\"static\" property="og:site_name" content="WAQAR." />`,
+    `<meta data-seo=\"static\" property="og:site_name" content="ZAIN." />`,
     `<meta data-seo=\"static\" property="og:type" content="${r.type}" />`,
     `<meta data-seo=\"static\" property="og:title" content="${esc(fullTitle)}" />`,
     `<meta data-seo=\"static\" property="og:description" content="${esc(r.description)}" />`,
@@ -96,7 +96,7 @@ for (const r of routes) {
 }
 
 // Fallback for unknown routes on static hosts that support 404.html (GitHub Pages, Netlify, etc.)
-await writeFile(resolve(dist, '404.html'), shell.replace(/<!--seo:start-->[\s\S]*?<!--seo:end-->/, '<!--seo:start-->\n    <title data-seo="static">Page not found — Waqar Yunus</title>\n    <meta data-seo="static" name="robots" content="noindex" />\n    <!--seo:end-->'));
+await writeFile(resolve(dist, '404.html'), shell.replace(/<!--seo:start-->[\s\S]*?<!--seo:end-->/, '<!--seo:start-->\n    <title data-seo="static">Page not found — Zain</title>\n    <meta data-seo="static" name="robots" content="noindex" />\n    <!--seo:end-->'));
 
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

@@ -20,7 +20,7 @@ export const processSteps: ProcessStep[] = [
 
 /** Short professional introduction shown under the hero (words light up as you scroll). */
 export const homeIntro =
-  'I’m Waqar, a creative developer based in Delhi. I plan, design and build websites, web apps and online stores — and the payment and API work behind them — so they’re fast, accessible and genuinely good to use.';
+  'I’m Zain, a creative developer based in Delhi. I plan, design and build websites, web apps and online stores — and the payment and API work behind them — so they’re fast, accessible and genuinely good to use.';
 
 /** About / creative developer section. */
 export const aboutAreas = [

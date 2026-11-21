@@ -20,7 +20,7 @@ import NotFound from '@/pages/NotFound';
 import { preloadPath } from '@/app/routes';
 
 const cornerLink = 'group block leading-none font-mono text-[13px] font-semibold uppercase tracking-[0.06em] text-bone transition-colors duration-300 hover:text-accent focus-visible:text-accent';
-const titleOf = (i: number) => `${projects[i].title} — Waqar Yunus`;
+const titleOf = (i: number) => `${projects[i].title} — Zain`;
 
 /**
  * A project page, griflan-style: under the site header, this project's editorial gallery, then
@@ -267,7 +267,7 @@ export default function ProjectDetail() {
           name: p.title,
           description: story,
           url: absoluteUrl(projectPath(p.slug)),
-          creator: { '@type': 'Person', name: 'Waqar Yunus' },
+          creator: { '@type': 'Person', name: 'Zain' },
           ...(p.liveUrl ? { sameAs: p.liveUrl } : {}),
           ...(p.year ? { dateCreated: p.year } : {}),
         }}

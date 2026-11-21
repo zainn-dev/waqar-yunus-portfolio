@@ -5,9 +5,9 @@ import type { Profile } from '@/types/content';
  * Anything marked [PLACEHOLDER] is written as a neutral starting point; rewrite in your own voice.
  */
 export const profile: Profile = {
-  name: 'Waqar Yunus',
-  brand: 'WAQAR',
-  monogram: 'WY',
+  name: 'Zain',
+  brand: 'ZAIN',
+  monogram: 'Z',
   title: 'Creative Developer',
   roles: [
     'Full-Stack Web Developer',
@@ -31,7 +31,7 @@ export const profile: Profile = {
     'Turning ideas into interactive reality.',
   ],
   shortBio:
-    'I’m Waqar, a full-stack developer in Delhi. I build websites and web apps end to end — React and Node.js products, WordPress sites, online stores, and the payment and API plumbing that keeps them running. I care about the parts people feel: speed, clarity, and motion that has a reason to exist.',
+    'I’m Zain, a full-stack developer in Delhi. I build websites and web apps end to end — React and Node.js products, WordPress sites, online stores, and the payment and API plumbing that keeps them running. I care about the parts people feel: speed, clarity, and motion that has a reason to exist.',
   story: [
     // [PLACEHOLDER] Replace with your own story.
     'I started building for the web because I liked seeing an idea become something people could actually use. That habit stuck: most of my work today sits where design, engineering and real-world constraints meet.',
@@ -50,5 +50,5 @@ export const profile: Profile = {
     { title: 'Impact', body: 'I enjoy work that helps people — especially for organisations doing social good.' },
   ],
   achievements: [], // Only add verified items, e.g. { title: '...', detail: '...', year: '2025' }
-  portrait: undefined, // e.g. { src: '/images/waqar.webp', alt: 'Waqar Yunus', width: 1200, height: 1500 }
+  portrait: undefined, // e.g. { src: '/images/zain.webp', alt: 'Zain', width: 1200, height: 1500 }
 };
