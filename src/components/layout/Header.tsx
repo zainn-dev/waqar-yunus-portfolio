@@ -176,7 +176,7 @@ export function Header() {
               <div className={cell} />
             </div>
             {/* col 3: logo */}
-            <Link to="/" className={cn(cell, 'ink-host group flex items-center justify-center text-bone')} aria-label="Waqar Yunus — home">
+            <Link to="/" className={cn(cell, 'ink-host group flex items-center justify-center text-bone')} aria-label="Zain — home">
               <span data-hm="logo" className="inline-block">
                 <Logo className="ink-follow text-[clamp(2.6rem,4.3vw,5rem)]" />
               </span>
@@ -212,7 +212,7 @@ export function Header() {
             </div>
             <div className="grid h-[4.5rem] grid-cols-[4.5rem_1fr_4.5rem] gap-px">
               <Mascot />
-              <Link to="/" className={cn(cell, 'ink-host flex items-center justify-center text-bone')} aria-label="Waqar Yunus — home">
+              <Link to="/" className={cn(cell, 'ink-host flex items-center justify-center text-bone')} aria-label="Zain — home">
                 <Logo className="ink-follow text-[1.75rem]" />
               </Link>
               <Cta compact />

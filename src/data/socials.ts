@@ -9,12 +9,11 @@ import type { SocialLink } from '@/types/content';
  * `icon` is a simple-icons key (see src/lib/icons.ts).
  */
 export const socials: SocialLink[] = [
-  { label: 'Instagram', icon: 'instagram', href: '', handle: '' },
-  { label: 'X / Twitter', icon: 'x', href: '', handle: '' },
-  { label: 'LinkedIn', icon: 'linkedin', href: '', handle: '' },
-  { label: 'YouTube', icon: 'youtube', href: '', handle: '' },
-  { label: 'GitHub', icon: 'github', href: '', handle: '' },
-  { label: 'WhatsApp', icon: 'whatsapp', href: '', handle: '' }, // e.g. 'https://wa.me/91XXXXXXXXXX'
+  { label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/ur__zainn', handle: '@ur__zainn' },
+  { label: 'X / Twitter', icon: 'x', href: 'https://x.com/am_zainu__', handle: '@am_zainu__' },
+  { label: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/in/waqar-yunus-820828326/', handle: 'Waqar Yunus' },
+  { label: 'WhatsApp', icon: 'whatsapp', href: 'https://wa.me/919523798118?text=Hi!%20I%20need%20a%20website%20for%20my%20business.', handle: '+91 95237 98118' },
+  { label: 'GitHub', icon: 'github', href: 'https://github.com/zainn-dev', handle: 'zainn-dev' },
 ];
 
 export const hasHref = (s: SocialLink) => s.href.trim().length > 0;
